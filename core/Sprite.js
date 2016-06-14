@@ -8,7 +8,12 @@ class Sprite{
     window.renderer.addNewElementToRender(this);
     this.positionX = positionX;
     this.positionY = positionY;
+    this.speedX = 0;
+    this.speedY = 0;
   }
 
-
+  speedByFrame(speedX, speedY){
+    this.speedX = speedX;
+    this.speedY = speedY;
+  }
 }
