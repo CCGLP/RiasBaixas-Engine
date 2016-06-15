@@ -1,12 +1,33 @@
 class Update{
 
   constructor(){
-    this.update = setInterval(function(){}, 1000/60);
+    if (window.update == null){
 
+      this.gameObjectTicks = [];
+      window.update = this;
+    }
+    else{
+      return window.update;
+
+    }
   }
 
-  setUpdateFunction(method){
-    clearInterval(this.update);
-    this.update = setInterval(method, 1000/60);
+
+  update(){
+
+    for (var i = 0; i<window.update.gameObjectTicks.length; i++){
+      window.update.gameObjectTicks[i]()
+    }
   }
+
+  startUpdate(){
+    this.updaterutine = setInterval(this.update, 1000/60)
+  }
+
+  add(tick){
+    console.log("Is adding")
+    this.gameObjectTicks[this.gameObjectTicks.length] = tick
+  }
+
+
 }

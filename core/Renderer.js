@@ -33,6 +33,26 @@ class Renderer{
   }
 
   addNewElementToRender(sprite){
+    var order = sprite.renderOrder
+    var auxOrder;
+    var aux;
+    var aux2;
+    var i= 0;
+    var j = 0;
+    for (i = 0; i< this.renderElements.length; i++){
+      auxOrder = this.renderElements[i].renderOrder
+      if (order < auxOrder){
+        aux = this.renderElements[i]
+        this.renderElements[i] = sprite
+        var iterations = this.renderElements.length;
+        for (j = i+1; j <= iterations; j++){
+          aux2 = this.renderElements[j]
+          this.renderElements[j] = aux
+          aux = aux2
+        }
+        return;
+      }
+    }
     this.renderElements[this.renderElements.length] = sprite;
 
   }
@@ -58,7 +78,7 @@ class Renderer{
   tick(){
      window.renderer.cleanScreen();
      window.renderer.renderAll();
-     console.log(window.renderer.frameCount++);
+
 
   }
    startRender(){
