@@ -25,7 +25,6 @@ class Update{
   }
 
   add(tick){
-    console.log("Is adding")
     this.gameObjectTicks[this.gameObjectTicks.length] = tick
   }
 

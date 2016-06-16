@@ -6,7 +6,6 @@ class Sprite extends GameObject{
     this.image.width = width;
     this.image.height = height;
     this.renderOrder = renderOrder
-    console.log(this.image.width +"," + this.image.height)
     window.renderer.addNewElementToRender(this);
     this.positionX = positionX;
     this.positionY = positionY;

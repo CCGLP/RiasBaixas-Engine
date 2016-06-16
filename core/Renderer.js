@@ -16,6 +16,7 @@ class Renderer{
 
       this.width = realWidth;
       this.height = realHeight;
+      this.camera = {positionX : 0, positionY : 0}
       document.write("<canvas id = \"riasBaixasCanvas\" width = \" " + realWidth + "\" height = \" " + realHeight + "\"  > </canvas>")
       this.ctx = document.getElementById("riasBaixasCanvas").getContext("2d");
       this.frameCount = 0
@@ -58,12 +59,14 @@ class Renderer{
   }
 
   cleanScreen(){
-    this.ctx.fillRect(0,0,this.width, this.height);
+    this.ctx.fillRect(-this.camera.positionX,-this.camera.positionY,this.width, this.height);
   }
 
   renderAll(){
+    console.log(this.camera.positionX + "cameraX")
     for (var i = 0; i < this.renderElements.length; i++){
-      this.ctx.drawImage(this.renderElements[i].image, this.renderElements[i].positionX, this.renderElements[i].positionY, this.renderElements[i].image.width, this.renderElements[i].image.height);
+      if (((this.camera.positionX + this.width) > this.renderElements[i].positionX  && this.renderElements[i].positionX > (this.camera.positionX)) && ((this.camera.positionY+ this.height) > this.renderElements[i].positionY  && this.renderElements[i].positionY > (this.camera.positionY)) )
+        this.ctx.drawImage(this.renderElements[i].image, this.renderElements[i].positionX, this.renderElements[i].positionY,this.renderElements[i].image.width, this.renderElements[i].image.height);
     }
 
   }
@@ -76,11 +79,19 @@ class Renderer{
 
 
   tick(){
+     window.renderer.ctx.save()
+     window.renderer.ctx.translate(window.renderer.camera.positionX, window.renderer.camera.positionY)
      window.renderer.cleanScreen();
      window.renderer.renderAll();
-
+     window.renderer.ctx.restore();
 
   }
+
+moveCameraTo(positionX, positionY){
+  this.camera.positionX = positionX;
+  this.camera.positionY = positionY;
+}
+
    startRender(){
     this.renderRutine  = setInterval(this.tick,1000/60);
 
