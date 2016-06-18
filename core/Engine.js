@@ -12,7 +12,7 @@ class Engine{
     renderer.startRender();
     renderer.setBackgroundColor("#000000")
     var update = new Update()
-
+    var audioHandler = new AudioHandler()
     update.startUpdate()
   }
 }

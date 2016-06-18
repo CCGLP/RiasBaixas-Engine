@@ -14,7 +14,7 @@ class VamohACalmano extends Sprite{
 class MoveCamera extends GameObject{
   constructor(){
     super()
-    this.speedX = -0.5;
+    this.speedX = -0;
     this.speedY = 0
   }
 
@@ -39,7 +39,7 @@ var moveCamera = new MoveCamera();
 var nX = 01920;
 var nY = 0;
 var arr = []
-for (var i = 0; i < 200; i++){
+/*for (var i = 0; i < 200; i++){
   for (var j = 0; j< 200; j++){
     arr[i] = new Sprite(10,10, nX, nY, "images.jpg", -1);
     nX+=10;
@@ -47,6 +47,10 @@ for (var i = 0; i < 200; i++){
   nX = 1920;
   nY+=10;
 }
+*/
+
+window.audioHandler.setAudio("oggTest.ogg")
+var g = window.audioHandler.setAudio("greys.mp3")
 
 
 
