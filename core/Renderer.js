@@ -65,8 +65,14 @@ class Renderer{
   renderAll(){
     console.log(this.camera.positionX + "cameraX")
     for (var i = 0; i < this.renderElements.length; i++){
-      if (((this.camera.positionX + this.width) > this.renderElements[i].positionX  && this.renderElements[i].positionX > (this.camera.positionX)) && ((this.camera.positionY+ this.height) > this.renderElements[i].positionY  && this.renderElements[i].positionY > (this.camera.positionY)) )
-        this.ctx.drawImage(this.renderElements[i].image, this.renderElements[i].positionX, this.renderElements[i].positionY,this.renderElements[i].image.width, this.renderElements[i].image.height);
+      if (((this.camera.positionX + this.width) > this.renderElements[i].positionX  && this.renderElements[i].positionX > (this.camera.positionX)) && ((this.camera.positionY+ this.height) > this.renderElements[i].positionY  && this.renderElements[i].positionY > (this.camera.positionY)) ){
+        if (this.renderElements[i].text == undefined)
+          this.ctx.drawImage(this.renderElements[i].image, this.renderElements[i].positionX, this.renderElements[i].positionY,this.renderElements[i].image.width, this.renderElements[i].image.height);
+        else {
+          this.ctx.fillStyle = this.renderElements[i].color
+          this.ctx.fillText(this.renderElements[i].text, this.renderElements[i].positionX, this.renderElements[i].positionY)
+        }
+      }
     }
 
   }

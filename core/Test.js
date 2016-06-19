@@ -35,7 +35,9 @@ var sprite2 = new Sprite(300, 300, 200, 400, "scream.jpg",1)
 var sprite4 = new VamohACalmano(140,140,200,100, "house.png", 4,3,0)
 var moveCamera = new MoveCamera();
 
-
+TextSprite.changeCanvasFont("40px Comic Sans MS")
+var text = new TextSprite("hola", 10 , 20, 10, "white");
+var text2 = new TextSprite("Hola, yo tenía un barco", 200,450,2,"white")
 var nX = 01920;
 var nY = 0;
 var arr = []
@@ -49,8 +51,8 @@ var arr = []
 }
 */
 
-window.audioHandler.setAudio("oggTest.ogg")
-var g = window.audioHandler.setAudio("greys.mp3")
+//window.audioHandler.setAudio("oggTest.ogg")
+//var g = window.audioHandler.setAudio("greys.mp3")
 
 
 
