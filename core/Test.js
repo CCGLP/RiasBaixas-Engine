@@ -14,7 +14,7 @@ class VamohACalmano extends Sprite{
 class MoveCamera extends GameObject{
   constructor(){
     super()
-    this.speedX = -0;
+    this.speedX = 0;
     this.speedY = 0
   }
 

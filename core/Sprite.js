@@ -3,6 +3,8 @@ class Sprite extends GameObject{
     super()
     this.image = new Image(width, height)
     this.image.src = spriteImage
+    this.width = width;
+    this.height = height;
     this.image.width = width;
     this.image.height = height;
     this.renderOrder = renderOrder
