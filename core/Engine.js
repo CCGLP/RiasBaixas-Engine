@@ -8,7 +8,7 @@ class Engine{
 
 
   start(){
-    var renderer = new Renderer(1920,1080)
+    var renderer = new Renderer(300,300,2000,2000)
     renderer.startRender();
     renderer.setBackgroundColor("#000000")
     var update = new Update()

@@ -15,7 +15,7 @@ class MoveCamera extends GameObject{
   constructor(){
     super()
     this.speedX = 0;
-    this.speedY = 0
+    this.speedY = 0;
   }
 
   tick(){
@@ -34,7 +34,20 @@ var sprite3 = new VamohACalmano(100,100,400,200, "images.jpg",3)
 var sprite2 = new Sprite(300, 300, 200, 400, "scream.jpg",1)
 var sprite4 = new VamohACalmano(140,140,200,100, "house.png", 4,3,0)
 var moveCamera = new MoveCamera();
-
+document.addEventListener('keydown', function(event) {
+  if (event.keyCode == 37){
+    window.renderer.camera.positionX -=10;
+  }
+  else if (event.keyCode == 38){
+    window.renderer.camera.positionY -=10;
+  }
+  else if (event.keyCode == 39){
+    window.renderer.camera.positionX+=10;
+  }
+  else if (event.keyCode == 40){
+    window.renderer.camera.positionY +=10;
+  }
+});
 TextSprite.changeCanvasFont("40px Comic Sans MS")
 var text = new TextSprite("hola", 10 , 20, 10, "white");
 var text2 = new TextSprite("Hola, yo tenía un barco", 200,450,2,"white")
@@ -56,4 +69,4 @@ var arr = []
 
 
 
-setTimeout(function(){window.renderer.moveCameraTo(-2,-3);new VamohACalmano(200,200, 20, 30, "scream.jpg", -1,5,5)},1000)
+setTimeout(function(){new VamohACalmano(200,200, 20, 30, "scream.jpg", -1,5,5)},1000)
