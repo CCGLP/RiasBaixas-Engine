@@ -67,17 +67,21 @@ class Renderer{
 
   renderAll(){
     for (var i = 0; i < this.renderElements.length; i++){
+      if (this.renderElements[i].text == undefined){
       if (((this.camera.positionX + this.width) > this.renderElements[i].positionX  &&
-       this.renderElements[i].positionX + this.renderElements[i].width > (this.camera.positionX)) &&
-       ((this.camera.positionY+ this.height) > this.renderElements[i].positionY  &&
-       this.renderElements[i].positionY + this.renderElements[i].height  > (this.camera.positionY)) ){
-        if (this.renderElements[i].text == undefined)
+        this.renderElements[i].positionX + this.renderElements[i].width > (this.camera.positionX)) &&
+        ((this.camera.positionY+ this.height) > this.renderElements[i].positionY  &&
+        this.renderElements[i].positionY + this.renderElements[i].height  > (this.camera.positionY)) )
           this.ctx.drawImage(this.renderElements[i].image, this.renderElements[i].positionX, this.renderElements[i].positionY,this.renderElements[i].image.width, this.renderElements[i].image.height);
-        else {
-          this.ctx.fillStyle = this.renderElements[i].color
-          this.ctx.fillText(this.renderElements[i].text, this.renderElements[i].positionX, this.renderElements[i].positionY)
         }
-      }
+        else if (((this.camera.positionX + this.width) > this.renderElements[i].positionX  &&
+          this.renderElements[i].positionX + this.renderElements[i].width > (this.camera.positionX)) &&
+          ((this.camera.positionY+ this.height) > this.renderElements[i].positionY  &&
+          this.renderElements[i].positionY + this.renderElements[i].height  > (this.camera.positionY)) ) {
+            this.ctx.fillStyle = this.renderElements[i].color
+            this.ctx.fillText(this.renderElements[i].text, this.renderElements[i].positionX, this.renderElements[i].positionY)
+        }
+
     }
 
   }

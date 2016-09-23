@@ -29,11 +29,13 @@ var engine = new Engine()
 engine.start()
 var sprite0 = new Sprite(20, 20, 50, 60, "house.png", 0)
 var spriteLejos = new Sprite (100, 100, -200, -200, "house.png", 0)
-var sprite1 = new VamohACalmano(100,100, 200,100, "images.jpg",2)
-var sprite3 = new VamohACalmano(100,100,400,200, "images.jpg",3)
-var sprite2 = new Sprite(300, 300, 200, 400, "scream.jpg",1)
+var sprite1 = new VamohACalmano(100,100, 600,800, "images.jpg",2)
+var sprite3 = new VamohACalmano(100,100,600,700, "images.jpg",3)
+var sprite2 = new Sprite(300, 300, 600, 600, "scream.jpg",1)
 var sprite4 = new VamohACalmano(140,140,200,100, "house.png", 4,3,0)
 var moveCamera = new MoveCamera();
+window.renderer.camera.positionX = 600;
+window.renderer.camera.positionY = 600;
 document.addEventListener('keydown', function(event) {
   if (event.keyCode == 37){
     window.renderer.camera.positionX -=10;
@@ -50,7 +52,7 @@ document.addEventListener('keydown', function(event) {
 });
 TextSprite.changeCanvasFont("40px Comic Sans MS")
 var text = new TextSprite("hola", 10 , 20, 10, "white");
-var text2 = new TextSprite("Hola, yo tenía un barco", 200,450,2,"white")
+var text2 = new TextSprite("Hola, yo tenía un barco", 650,600,2,"white")
 var nX = 01920;
 var nY = 0;
 var arr = []

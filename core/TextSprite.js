@@ -2,8 +2,8 @@ class TextSprite extends GameObject{
   constructor(text, positionX, positionY, renderOrder, color){
     super()
     this.text = text;
-    this.height = 0;
-    this.width = 0;
+    this.height = 40;
+    this.width = 40 * this.text.length;
     this.positionX = positionX;
     this.positionY = positionY;
     this.renderOrder = renderOrder;
