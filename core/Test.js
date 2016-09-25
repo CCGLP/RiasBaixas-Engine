@@ -1,16 +1,4 @@
-class VamohACalmano extends Sprite{
-  constructor(width,height,positionX, positionY, spriteImage, renderOrder = 0, velocityX = 1, velocityY = 1){
-    super(width,height,positionX, positionY, spriteImage, renderOrder)
-    this.velocityX = velocityX;
-    this.velocityY = velocityY
-  }
-  tick(){
-    super.tick()
-    this.positionX += this.velocityX;
-    this.positionY += this.velocityY;
 
-  }
-}
 class MoveCamera extends GameObject{
   constructor(){
     super()
@@ -27,15 +15,23 @@ class MoveCamera extends GameObject{
 
 var engine = new Engine()
 engine.start()
-var sprite0 = new Sprite(20, 20, 50, 60, "house.png", 0)
-var spriteLejos = new Sprite (100, 100, -200, -200, "house.png", 0)
-var sprite1 = new VamohACalmano(100,100, 600,800, "images.jpg",2)
-var sprite3 = new VamohACalmano(100,100,600,700, "images.jpg",3)
-var sprite2 = new Sprite(300, 300, 600, 600, "scream.jpg",1)
-var sprite4 = new VamohACalmano(140,140,200,100, "house.png", 4,3,0)
+var x = 600;
+var y = 600;
+var i = 0;
+var arr = []
+for (x = 0; x<2000; x+=64){
+  for (y = 600; y<2000; y+=64){
+    arr[i] = new Sprite(64,64,x,y,"tile_rock.png", 1);
+    i++;
+  }
+}
+var tux = new Sprite(64,64, 600,546, "tux_anims/1.png", 2);
+tux.speedByFrame(1,0);
+tux.addAnimation(["tux_anims/1.png","tux_anims/2.png","tux_anims/3.png","tux_anims/4.png"], 270)
 var moveCamera = new MoveCamera();
 window.renderer.camera.positionX = 600;
-window.renderer.camera.positionY = 600;
+window.renderer.camera.positionY = 100;
+window.renderer.setBackgroundColor("#4dd2ff")
 document.addEventListener('keydown', function(event) {
   if (event.keyCode == 37){
     window.renderer.camera.positionX -=10;
@@ -70,5 +66,4 @@ var arr = []
 //var g = window.audioHandler.setAudio("greys.mp3")
 
 
-
-setTimeout(function(){new VamohACalmano(200,200, 20, 30, "scream.jpg", -1,5,5)},1000)
+setInterval(function(){window.renderer.camera.positionX += 0.6;}, 16)

@@ -7,6 +7,7 @@ class Sprite extends GameObject{
     this.height = height;
     this.image.width = width;
     this.image.height = height;
+    this.anims = [this.image]
     this.renderOrder = renderOrder
     window.renderer.addNewElementToRender(this);
     this.positionX = positionX;
@@ -23,5 +24,28 @@ class Sprite extends GameObject{
 
   tick(){
     super.tick()
+    this.positionX += this.speedX
+    this.positionY += this.speedY;
   }
+
+  // anims needs to be an array of strings with the images timeBetween in ms
+  addAnimation(anims,timeBetween, loop = true){
+    var animArr = []
+    for (var i = 0; i < anims.length; i++){
+      animArr[i] = new Image(this.width, this.height)
+      animArr[i].src = anims[i]
+      animArr[i].width = this.width
+      animArr[i].height = this.height
+    }
+    this.anims = animArr;
+    this.timeBetweenAnim = timeBetween
+    this.animIndex = 0
+    setInterval(function(){this.image = this.anims[this.animIndex];
+       this.animIndex++;
+        if (this.animIndex >=this.anims.length){
+          this.animIndex =0
+        }
+      }.bind(this), this.timeBetweenAnim)
+  }
+
 }
