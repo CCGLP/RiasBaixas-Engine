@@ -28,6 +28,8 @@ for (x = 0; x<2000; x+=64){
 var tux = new Sprite(64,64, 600,546, "tux_anims/1.png", 2);
 tux.speedByFrame(1,0);
 tux.addAnimation(["tux_anims/1.png","tux_anims/2.png","tux_anims/3.png","tux_anims/4.png"], 270)
+tux.addAnimation(["house.png", "scream.jpg", "tile_rock.png"])
+
 var moveCamera = new MoveCamera();
 window.renderer.camera.positionX = 600;
 window.renderer.camera.positionY = 100;
