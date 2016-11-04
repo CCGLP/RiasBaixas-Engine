@@ -1,5 +1,96 @@
+class Snake extends Sprite{
+  constructor(width,height,positionX, positionY, spriteImage, renderOrder = 0, widthScreen, heightScreen){
+    super(width, height, positionX, positionY, spriteImage, renderOrder)
+    this.speedX = 0
+    this.speedY = 0
+  }
+  tick(){
+    super.tick()
+    if (this.positionX > widthScreen){
+      this.positionX = 1 - this.width
+    }
+    else if (this.positionX < 0 - this.width){
+      this.positionX = widthScreen -1
+    }
 
-class MoveCamera extends GameObject{
+    if (this.positionY > heightScreen){
+      this.positionY = 1 - this.height
+    }
+    else if (this.positionY < 0 - this.height){
+      this.positionY = heightScreen -1
+    }
+
+  }
+
+}
+var widthScreen = 600;
+var heightScreen = 600;
+
+var engine = new Engine(widthScreen, heightScreen)
+
+engine.start()
+var snake = new Snake(64,64, 120, 120, "cuadradito.png",0, widthScreen, heightScreen)
+var text = new TextSprite("lastKeyPressed: ", 150, 40,0, "white")
+var textPause = new TextSprite("PAUSE", 3000, 3000, 0, "white")
+TextSprite.changeCanvasFont("40px Arial")
+var KEYUPLEFT, KEYUPRIGHT, KEYUPUP, KEYUPDOWN, ESC = false
+
+document.addEventListener('keydown', function(event) {
+  if (!ESC){
+
+    text.changeText("lastKeyPressed: " + event.keyCode)
+    if (event.keyCode == 37){
+      snake.speedX = -3
+      KEYUPLEFT = true
+    }
+    else if (event.keyCode == 38){
+      snake.speedY = -3
+      KEYUPUP= true
+    }
+    else if (event.keyCode == 39){
+      snake.speedX = 3
+      KEYUPRIGHT = true
+    }
+    else if (event.keyCode == 40){
+      snake.speedY = 3
+      KEYUPDOWN = true
+    }
+    }
+     if (event.keyCode == 27){
+        snake.speedX = 0
+        snake.speedY = 0
+        ESC = !ESC
+        if (ESC){
+            textPause.changePosition(widthScreen/2 - textPause.width /2, heightScreen/2 - textPause.height/2)
+
+        }
+        else{
+          textPause.changePosition(2000,2000)
+        }
+      }
+});
+
+document.addEventListener('keyup', function(event){
+  if (event.keyCode == 37 && KEYUPLEFT){
+    snake.speedX = 0
+    KEYUPLEFT = false
+  }
+  else if (event.keyCode == 38 && KEYUPUP){
+    snake.speedY = 0
+    KEYUPUP= false
+  }
+  else if (event.keyCode == 39 && KEYUPRIGHT){
+    snake.speedX = 0
+    KEYUPRIGHT = false
+  }
+  else if (event.keyCode == 40 && KEYUPDOWN){
+    snake.speedY = 0
+    KEYUPDOWN = false
+  }
+})
+
+
+/*class MoveCamera extends GameObject{
   constructor(){
     super()
     this.speedX = 0;
@@ -62,10 +153,11 @@ var arr = []
   nX = 1920;
   nY+=10;
 }
-*/
+
 
 //window.audioHandler.setAudio("oggTest.ogg")
 //var g = window.audioHandler.setAudio("greys.mp3")
 
 
 setInterval(function(){window.renderer.camera.positionX += 0.6;}, 16)
+*/

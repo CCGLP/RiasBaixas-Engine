@@ -109,8 +109,9 @@ moveCameraTo(positionX, positionY){
 }
 
    startRender(){
-    this.renderRutine  = setInterval(this.tick,1000/60);
-
+    //this.renderRutine  = setInterval(this.tick,1000/60);
+    window.requestAnimationFrame(this.startRender.bind(this))
+    this.tick()
   }
 
 

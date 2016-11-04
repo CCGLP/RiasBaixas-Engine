@@ -20,6 +20,14 @@ class TextSprite extends GameObject{
     window.renderer.ctx.textAlign = textalign
   }
 
+  changeText(text){
+    this.text = text
+  }
+  changePosition(x,y){
+    this.positionX = x
+    this.positionY = y
+  }
+
   tick(){
     super.tick()
   }
